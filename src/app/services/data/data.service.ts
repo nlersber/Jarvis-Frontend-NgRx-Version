@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from "rxjs";
-import { Filter } from './models/filter';
-import * as FilterActions from "./actions/filter.action";
+import { Filter } from '../../models/filter';
+import * as FilterActions from "../../actions/filter.action";
 
 interface AppState {
   message: Filter
