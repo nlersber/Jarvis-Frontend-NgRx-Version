@@ -1,0 +1,23 @@
+<div class="wrapper">
+  <div [className]="available?unavailable:info">
+    <div class="img-wrapper">
+      <img class="img" [src]="dataService.getImage(item.name)">
+      <div class="img-placeholder"></div>
+    </div>
+
+    <h5 class="title">{{item.name}}</h5>
+    <p class="price">€<span>{{item.price}}</span></p>
+    <div class="details">
+      <div>
+        <hr>
+        <div class="row">
+          <div class="col-12 add-cart-wrapper cartIcon" style="text-align: center;">
+            <button class="btn btn-block" style="width: 100%;" type="button" class="cart" (click)="onAddToCart()"><img src="assets/cart_primary.svg"
+                alt="" /></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <span class="category-name" *ngFor='let category of item.categories'>{{category}}</span-->
+  </div>
+</div>

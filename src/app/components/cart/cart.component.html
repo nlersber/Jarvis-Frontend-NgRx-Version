@@ -1,0 +1,80 @@
+<div class="cartBox">
+
+  <h4 style="padding-top: 10px;" class="center">Cart</h4>
+
+  <div *ngIf="isEmpty; else notempty">
+    <p class="center">Cart is empty</p>
+  </div>
+
+
+  <ng-template #notempty>
+    <table style="width:100%;">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <!-- <th>Price</th> -->
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let item of arrItems">
+        <tr>
+          <td>{{item[0].name}}</td>
+          <!-- <td>€{{item[0].price}}</td> -->
+          <td>X {{item[1]}}</td>
+          <td>€{{item[0].price*item[1]}}</td>
+          <td><button class="btn-danger" (click)='deleteItem(item[0])' style="border-radius: 10px;">x</button></td>
+        </tr>
+      </tbody>
+
+      <hr>
+
+
+    </table>
+
+    <div>
+      <h5 style="padding-top: 10px;" class="center">Total</h5>
+      <p class="center">€{{cartTotal}}</p>
+    </div>
+
+    <div>
+      <button class="btn-block btn-primary" (click)="placeOrder()">Place Order</button>
+    </div>
+
+
+    <!-- <div style="height: 1.5em; display: flex; justify-content: space-between">
+      <p>Item</p>
+      <p>Quantity</p>
+      <p>Price</p>
+      <p>Remove</p>
+
+    </div>
+    <div style="background-color: white;" class="item" *ngFor="let item of arrItems">
+
+
+
+      <div style="height: 1.5em;">
+
+        <div class="description" style="display: flex; justify-content: space-between">
+          <p>{{item[0].name}}:</p>
+          <p>€{{item[0].price}}</p>
+          <p>{{item[1]}}</p>
+          <div>
+            <button class="btn-danger" (click)='deleteItem(item.key)' style="border-radius: 10px;">x</button>
+          </div>
+        </div>
+
+         <div class="col-6-sm price">
+            <p>{{item[1]*item[0].price | currency:'EUR':'symbol':'1.0-0' }}</p>
+          </div>
+
+      </div>
+
+
+
+
+    </div> -->
+  </ng-template>
+
+</div>
