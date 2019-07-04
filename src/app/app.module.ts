@@ -5,10 +5,14 @@ import { filterReducer } from "./reducers/filterReducer";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ShowcaseComponent } from './components/showcase/showcase.component';
+import { FiltersComponent } from './components/filters/filters.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShowcaseComponent,
+    FiltersComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from "rxjs";
 import { Filter } from './models/filter';
+import * as FilterActions from "./actions/filter.action";
 
 interface AppState {
   message: Filter
@@ -18,6 +19,6 @@ export class DataService {
   }
 
   changeFilter(type: string, value: number) {
-    this.store.dispatch({ type: type, value: value })
+    this.store.dispatch(new FilterActions.ChangeFilter({ type: type, value: value }))
   }
 }
