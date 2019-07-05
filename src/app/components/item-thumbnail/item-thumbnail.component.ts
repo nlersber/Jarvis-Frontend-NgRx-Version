@@ -9,6 +9,7 @@ import { DataService } from '../../services/data/data.service';
   styleUrls: ['./item-thumbnail.component.scss']
 })
 export class ItemThumbnailComponent implements OnInit {
+  
   @Input() item: Item;
 
   available: boolean

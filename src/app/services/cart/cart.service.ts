@@ -82,14 +82,7 @@ export class CartService {
   }
 
   placeOrder() {
-    // let temp = {};
-    // let arr = Array.from(this.items.entries())
-    // for (let i = 0; i < arr.length; i++) {
-    //   let item = arr
-    //   temp[i] = {};
-    //   temp[i][0] = arr[i][0].id.toString();
-    //   temp[i][1] = arr[i][1];
-    // }
+    
     this.dataService.placeOrder(new Order(this.items).toJSON()).subscribe();
     this.flushCart();
   }

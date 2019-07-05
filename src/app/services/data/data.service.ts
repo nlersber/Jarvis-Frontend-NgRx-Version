@@ -3,7 +3,10 @@ import { Store } from '@ngrx/store';
 import { Observable } from "rxjs";
 import { Filter } from '../../models/filter';
 import * as FilterActions from "../../actions/filter.action";
-import { HttpHeaders } from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Item } from 'src/app/models/item';
+import { map } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 interface AppState {
   message: Filter
@@ -15,7 +18,7 @@ export class DataService {
 
   message: Observable<Filter>
 
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<AppState>, private http: HttpClient) {
     this.message = this.store.select('message')
   }
 
@@ -41,7 +44,7 @@ export class DataService {
     let errMsg = (error.message) ? error.message :
       error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg); // log to console instead
-    return observableThrowError(errMsg);
+    //return observableThrowError(errMsg);
   }
 
   placeOrder(items: any) {

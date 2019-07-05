@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from 'src/app/services/data/data.service';
+import { Item } from '../../models/item'
+import { CartService } from '../../services/cart/cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'showcase',
@@ -8,14 +11,14 @@ import { DataService } from 'src/app/services/data/data.service';
 })
 export class ShowcaseComponent implements OnInit {
 
-  text: string
+  items: Observable<Item[]>
 
-
-  constructor(private dataService: DataService) {
-    this.dataService.message.subscribe(s => this.text = s.type)
+  constructor(private dataService: DataService, private cartService: CartService) {
+    this.items = this.dataService.getRemoteData()
   }
 
   ngOnInit() {
   }
 
 }
+

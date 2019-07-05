@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from 'src/app/services/data/data.service';
 import { Filter } from 'src/app/models/filter';
 
@@ -8,6 +8,9 @@ import { Filter } from 'src/app/models/filter';
   styleUrls: ['./filters.component.scss']
 })
 export class FiltersComponent implements OnInit {
+
+  @Input()
+  priceFilters: any[]
 
   filters: string[] = ["<=", "filter2", "filter3", "all"]
 
