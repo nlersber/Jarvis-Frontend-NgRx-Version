@@ -7,12 +7,13 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app-component/app.component';
 import { ShowcaseComponent } from './components/showcase/showcase.component';
-import { FiltersComponent } from './components/filters/filters.component';
+import { FiltersComponent } from './components/filters/filter/filters.component';
 import { PricePipe } from './pipes/price.pipe';
 import { CartComponent } from './components/cart/cart.component';
 import { DataService } from './services/data/data.service';
 import { CartService } from './services/cart/cart.service';
 import { ItemThumbnailComponent } from './components/item-thumbnail/item-thumbnail.component';
+import { FilterContainerComponent } from './components/filters/filter-container/filter-container.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ItemThumbnailComponent } from './components/item-thumbnail/item-thumbna
     FiltersComponent,
     PricePipe,
     CartComponent,
-    ItemThumbnailComponent
+    ItemThumbnailComponent,
+    FilterContainerComponent
   ],
   imports: [
     BrowserModule,

@@ -22,8 +22,8 @@ export class DataService {
     this.message = this.store.select('message')
   }
 
-  changeFilter(type: string, value: number) {
-    this.store.dispatch(new FilterActions.ChangeFilter({ type: type, value: value }))
+  changeFilter(filter: Filter) {
+    this.store.dispatch(new FilterActions.ChangeFilter(filter))
   }
 
   getRemoteData(): Observable<Item[]> {
