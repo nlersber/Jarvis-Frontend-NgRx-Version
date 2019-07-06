@@ -4,9 +4,9 @@ import { Observable } from "rxjs";
 import { Filter } from '../../models/filter';
 import * as FilterActions from "../../actions/filter.action";
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Item } from 'src/app/models/item';
+import { Item } from '../../models/item';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 
 interface AppState {
   message: Filter
