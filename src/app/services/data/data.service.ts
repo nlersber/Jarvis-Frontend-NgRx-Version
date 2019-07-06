@@ -23,6 +23,7 @@ export class DataService {
   }
 
   changeFilter(filter: Filter) {
+    console.log(filter)
     this.store.dispatch(new FilterActions.ChangeFilter(filter))
   }
 
