@@ -17,7 +17,7 @@ export function filterReducer(state: Filter = defaultFilter, action: Action) {
 
     switch (action.type) {
         case FilterActions.CHANGE_FILTER:
-            return newState(state, { type: action.payload.type, value: action.payload.value })
+            return newState(state, action.payload)
         default:
             return defaultFilter
 
