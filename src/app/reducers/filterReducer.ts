@@ -15,7 +15,8 @@ const newState = (state, data) => {
 }
 
 export function filterReducer(state: Filter = defaultFilter, action: Action) {
-    console.log(action ? action.type : "action null", state)
+
+    console.log(state)
 
     switch (action.type) {
         case FilterActions.CHANGE_FILTER:

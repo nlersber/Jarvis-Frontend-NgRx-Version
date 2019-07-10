@@ -16,14 +16,14 @@ interface AppState {
 })
 export class DataService {
 
-  message: Observable<Filter>
+  filter: Observable<Filter>
 
   constructor(private store: Store<AppState>, private http: HttpClient) {
-    this.message = this.store.select('message')
+    this.filter = this.store.select('message')
   }
 
   changeFilter(filter: Filter) {
-    console.log(filter)
+    console.log('in dataservice')
     this.store.dispatch(new FilterActions.ChangeFilter(filter))
   }
 
