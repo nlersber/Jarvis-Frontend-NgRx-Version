@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PriceFilter } from 'src/app/models/priceFilter';
 import { DataService } from 'src/app/services/data/data.service';
-import { Filter } from 'src/app/models/filter';
-import { FilterType } from 'src/app/models/FilterType';
 
 @Component({
   selector: 'filter-container',
@@ -12,19 +10,20 @@ import { FilterType } from 'src/app/models/FilterType';
 })
 export class FilterContainerComponent implements OnInit {
 
-  priceFilters: any[] = [
-    { id: 0, filter: { type: 'all', value: 0 }, checked: true, name: 'All', filterType: FilterType.PRICE },
-    { id: 1, filter: { type: '>=', value: 1.5 }, checked: false, name: 'Price >= 1.5', filterType: FilterType.PRICE },
-    { id: 2, filter: { type: '<all>', value: 1.5 }, checked: false, name: 'Price < 1.5', filterType: FilterType.PRICE }
+  readonly priceFilters: any[] = [
+    { id: 0, filter: new PriceFilter('all', 0), checked: true, name: 'All' },
+    { id: 1, filter: new PriceFilter('>=', 1.5), checked: false, name: 'Price >= 1.5' },
+    { id: 2, filter: new PriceFilter('<', 1.5), checked: false, name: 'Price < 1.5' }
   ]
-
 
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
   }
 
-  applyFilter(filter: Filter) {
+  applyFilter(filter: PriceFilter) {
+    console.log('filter received in container')
+    console.log(filter)
     this.dataService.changeFilter(filter)
   }
 }

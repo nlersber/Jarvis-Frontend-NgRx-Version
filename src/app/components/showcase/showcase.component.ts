@@ -1,10 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DataService } from 'src/app/services/data/data.service';
-import { Item } from '../../models/item'
-import { CartService } from '../../services/cart/cart.service';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Filter } from 'src/app/models/filter';
-import { Store } from '@ngrx/store';
+import { PriceFilter } from 'src/app/models/priceFilter';
+import { DataService } from 'src/app/services/data/data.service';
+import { Item } from '../../models/item';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'showcase',
@@ -14,11 +13,16 @@ import { Store } from '@ngrx/store';
 export class ShowcaseComponent implements OnInit {
 
   items: Observable<Item[]>
-  filter: Filter
+  priceFilter: PriceFilter = new PriceFilter('all', 0)
+
 
   constructor(private dataService: DataService, private cartService: CartService) {
     this.items = this.dataService.getRemoteData()
-    this.dataService.filter.subscribe(s => console.log(s))
+    this.dataService.filter.pipe().subscribe(s => {
+      console.log('fitler added');
+      console.log(s);
+      this.priceFilter = s
+    })
   }
 
   ngOnInit() {

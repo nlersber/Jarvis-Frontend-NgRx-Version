@@ -4,15 +4,15 @@
     <!-- Begin Price filters -->
 
     <div class="filterRemove">
-        <button *ngIf="filterActive || true" class="btn">Remove filters</button>
+        <button *ngIf="filterActive" class="btn">Remove filters</button>
     </div>
 
     <h5>Filter by price</h5>
     <div>
-        <form action="" id="priceFilters">
+        <form action="" id="pFilters">
             <div *ngFor="let item of priceFilters">
                 <input class="filterCheckbox" type="radio" [checked]='item.checked'
-                    (click)='changeFilter(item.filterType, item.id)'>{{item.name}}<br>
+                    (click)='changeFilter(item.id)'>{{item.name}}<br>
             </div>
         </form>
     </div>

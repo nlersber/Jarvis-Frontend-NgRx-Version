@@ -1,29 +1,28 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from "rxjs";
-import { Filter } from '../../models/filter';
-import * as FilterActions from "../../actions/filter.action";
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { Item } from '../../models/item';
 import { map } from 'rxjs/operators';
+import { PriceFilter } from 'src/app/models/priceFilter';
 import { environment } from '../../../environments/environment';
+import * as FilterActions from "../../actions/filter.action";
+import { Item } from '../../models/item';
 
-interface AppState {
-  message: Filter
+export interface AppState {
+  filter: PriceFilter
 }
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  filter: Observable<Filter>
+  filter: Observable<PriceFilter>
 
   constructor(private store: Store<AppState>, private http: HttpClient) {
-    this.filter = this.store.select('message')
+    this.filter = this.store.select('filterReducer', 'filter')
   }
 
-  changeFilter(filter: Filter) {
-    console.log('in dataservice')
+  changeFilter(filter: PriceFilter) {
     this.store.dispatch(new FilterActions.ChangeFilter(filter))
   }
 

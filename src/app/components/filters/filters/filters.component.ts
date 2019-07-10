@@ -1,7 +1,5 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
-import { Filter } from 'src/app/models/filter';
-import { createFilter } from '../../../factories/filterFactory'
-import { FilterType } from 'src/app/models/FilterType';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PriceFilter } from 'src/app/models/priceFilter';
 
 @Component({
   selector: 'filters',
@@ -14,12 +12,11 @@ export class FiltersComponent implements OnInit {
   priceFilters: any[]
 
   @Output()
-  onFilterChange: EventEmitter<Filter>= new EventEmitter()
+  onFilterChange: EventEmitter<PriceFilter>= new EventEmitter()
 
   filterActive = false;
 
   constructor() {
-    
   }
 
   ngOnInit() {
@@ -37,9 +34,10 @@ export class FiltersComponent implements OnInit {
 
   }
 
-  changeFilter(type: FilterType, id: number) {
-    const temp = this.priceFilters[id]
-    const filter = createFilter(type, temp.filter.type, temp.filter.value)
+  changeFilter(id: number) {
+    const filter=this.priceFilters[id].filter
+    console.log('filter made')
+    console.log(filter)
     this.changeVisual(id)
     this.onFilterChange.emit(filter)
   }

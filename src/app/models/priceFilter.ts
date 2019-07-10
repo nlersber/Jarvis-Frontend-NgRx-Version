@@ -1,17 +1,17 @@
-import { Filter } from './filter';
-import { FilterType } from './FilterType';
-
-export class PriceFilter implements Filter {
-    filterType: FilterType= FilterType.PRICE
+export class PriceFilter {
     type: string;
-    value: number;
-
-    apply(a: number): boolean {
-        return eval(`${a} ${this.type} ${this.value}`)
-    }
+    value: number;//< 3
 
     constructor(type: string, value: number) {
         this.type = type
         this.value = value
     }
+
+    apply(a: number): boolean {
+        if (this.type === 'all')
+            return true
+        return eval(`${a} ${this.type} ${this.value}`)
+    }
+
+
 }

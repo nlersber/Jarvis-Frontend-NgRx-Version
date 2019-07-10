@@ -1,5 +1,5 @@
 <div class="row">
-  <item-thumbnail *ngFor="let item of (items | async)" [item]="item" class="col-sm-12 col-md-6 col-lg-4 item"
+  <item-thumbnail *ngFor="let item of (items | async | price : priceFilter)" [item]="item" class="col-sm-12 col-md-6 col-lg-4 item"
     style="margin-bottom: 25px;">
   </item-thumbnail>
 </div>

@@ -1,29 +1,22 @@
 import * as FilterActions from "../actions/filter.action";
-import { Filter } from "../models/filter";
-import { FilterType } from '../models/FilterType';
+import { PriceFilter } from '../models/priceFilter';
 
 export type Action = FilterActions.Filters
 
-const defaultFilter = {
-    type: 'all',
-    value: 0,
-    filterType: null
-}
+const defaultFilter: PriceFilter = new PriceFilter('all', 0);
 
-const newState = (state, data) => {
+const newState = (state, data: PriceFilter) => {
     return Object.assign({}, state, data)
 }
 
-export function filterReducer(state: Filter = defaultFilter, action: Action) {
-
-    console.log(state)
-
+export function filterReducer(state: PriceFilter = defaultFilter, action: Action) {
+    console.log(action)
     switch (action.type) {
         case FilterActions.CHANGE_FILTER:
-            return newState(state, action.payload)
-        default:
-            return defaultFilter
-
+            //const temp = newState(state, action.payload)
+            return action.payload
+        default: break;
     }
-
+    console.log(defaultFilter)
+    return defaultFilter
 }
