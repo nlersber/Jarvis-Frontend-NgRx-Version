@@ -1,0 +1,30 @@
+<button type="button" class="toggle-btn">Filters</button>
+<div class="filters">
+
+    <!-- Begin Price filters -->
+
+    <div class="filterRemove">
+        <button *ngIf="filterActive || true" class="btn">Remove filters</button>
+    </div>
+
+    <h5>Filter by price</h5>
+    <div>
+        <form action="" id="priceFilters">
+            <div *ngFor="let item of priceFilters">
+                <input class="filterCheckbox" type="radio" [checked]='item.checked'
+                    (click)='changeFilter(item.filterType, item.id)'>{{item.name}}<br>
+            </div>
+        </form>
+    </div>
+
+    <!-- End price filters -->
+
+
+    <!-- <h5 style="padding-top: 20px">Filter by type</h5>
+  <form action="" id="typeFilters">
+    <input type="radio" name="All" id="AllFilter">All<br>
+    <input type="radio" name="Food" id="AllFilter">Food<br>
+    <input type="radio" name="Beverage" id="AllFilter">Beverage<br>
+  </form> -->
+
+</div>

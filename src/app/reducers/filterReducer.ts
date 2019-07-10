@@ -1,11 +1,13 @@
 import * as FilterActions from "../actions/filter.action";
 import { Filter } from "../models/filter";
+import { FilterType } from '../models/FilterType';
 
 export type Action = FilterActions.Filters
 
 const defaultFilter = {
     type: 'all',
-    value: 0
+    value: 0,
+    filterType: null
 }
 
 const newState = (state, data) => {
@@ -13,7 +15,8 @@ const newState = (state, data) => {
 }
 
 export function filterReducer(state: Filter = defaultFilter, action: Action) {
-    console.log(action ? action.type : "action null", state)
+
+    console.log(state)
 
     switch (action.type) {
         case FilterActions.CHANGE_FILTER:

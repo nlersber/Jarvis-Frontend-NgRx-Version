@@ -7,7 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './components/app-component/app.component';
 import { ShowcaseComponent } from './components/showcase/showcase.component';
-import { FiltersComponent } from './components/filters/filter/filters.component';
+import { FiltersComponent } from './components/filters/filters/filters.component';
 import { PricePipe } from './pipes/price.pipe';
 import { CartComponent } from './components/cart/cart.component';
 import { DataService } from './services/data/data.service';
