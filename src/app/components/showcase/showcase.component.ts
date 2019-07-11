@@ -13,15 +13,16 @@ import { CartService } from '../../services/cart/cart.service';
 export class ShowcaseComponent implements OnInit {
 
   items: Observable<Item[]>
-  priceFilter: PriceFilter = new PriceFilter('all', 0)
-
+  priceFilter: PriceFilter
+  readonly defaultFilter: PriceFilter = new PriceFilter('all', 0)
 
   constructor(private dataService: DataService, private cartService: CartService) {
     this.items = this.dataService.getRemoteData()
+    this.priceFilter = new PriceFilter('all', 0)
     this.dataService.filter.pipe().subscribe(s => {
-      console.log('fitler added');
-      console.log(s);
-      this.priceFilter = s
+      this.priceFilter = !!s
+        ? s
+        : this.defaultFilter
     })
   }
 

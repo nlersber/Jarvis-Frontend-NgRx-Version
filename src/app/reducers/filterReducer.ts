@@ -10,13 +10,11 @@ const newState = (state, data: PriceFilter) => {
 }
 
 export function filterReducer(state: PriceFilter = defaultFilter, action: Action) {
-    console.log(action)
     switch (action.type) {
         case FilterActions.CHANGE_FILTER:
             //const temp = newState(state, action.payload)
             return action.payload
         default: break;
     }
-    console.log(defaultFilter)
     return defaultFilter
 }

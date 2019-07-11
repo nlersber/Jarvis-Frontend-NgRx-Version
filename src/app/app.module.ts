@@ -29,7 +29,7 @@ import { FilterContainerComponent } from './components/filters/filter-container/
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot({
-      filterReducer
+      filter: filterReducer
     }),
     HttpClientModule
   ],

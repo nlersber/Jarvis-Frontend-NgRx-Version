@@ -8,15 +8,14 @@ import { PriceFilter } from '../models/priceFilter';
 export class PricePipe implements PipeTransform {
 
   transform(value: Item[], args: PriceFilter): Item[] {
-    if (!args)
+    if (!!!args)
+      return null
+    if (!!!value)
       return null
 
     const filter: PriceFilter = args
 
-    console.log(filter)
-    console.log('in de pipe')
-    console.log(value.filter(s => filter.apply(s.price)))
-    return !filter ?//If no filter provided, returns all items
+    return !!!filter ?
       value :
       value.filter(s => filter.apply(s.price))
   }

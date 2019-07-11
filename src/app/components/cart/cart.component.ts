@@ -40,7 +40,6 @@ export class CartComponent implements OnInit {
   }
 
   deleteItem(item: Item) {
-    console.log(item)
     this.cartService.deleteItemFromCart(item)
   }
 

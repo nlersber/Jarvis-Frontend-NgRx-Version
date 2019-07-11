@@ -12,7 +12,7 @@ export class FiltersComponent implements OnInit {
   priceFilters: any[]
 
   @Output()
-  onFilterChange: EventEmitter<PriceFilter>= new EventEmitter()
+  onFilterChange: EventEmitter<PriceFilter> = new EventEmitter()
 
   filterActive = false;
 
@@ -35,11 +35,13 @@ export class FiltersComponent implements OnInit {
   }
 
   changeFilter(id: number) {
-    const filter=this.priceFilters[id].filter
-    console.log('filter made')
-    console.log(filter)
+    const filter = this.priceFilters[id].filter
     this.changeVisual(id)
     this.onFilterChange.emit(filter)
+  }
+
+  removeFilter() {
+    this.changeFilter(0)
   }
 
 }

@@ -19,17 +19,8 @@ export class CartService {
   constructor(private dataService: DataService) { }
 
   containsItem(item: Item): boolean {
-    // const arr=Array.from(this.items.entries())
-    // console.log(arr)
-    // arr.forEach(s => {
-    //   console.log(s)
-    //   if (s[0].id === item.id)
-    //     return true
-    // })
-    // return false
     let arr = new Array<number>()
     Array.from(this.items.entries()).forEach(s => {
-      console.log("mapping items, checking")
       arr.push(s[0].id)
     })
     return arr.some(s => s === item.id)
@@ -54,24 +45,15 @@ export class CartService {
 
   deleteItemFromCart(item) {
     if (this.containsItem(item)) {
-      console.log("contains item")
       let amount: number = this.items.get(item)
-      if (amount === 1) {
-        console.log("only 1, delete")
+      if (amount === 1)
         this.items.delete(item)
-      }
-      else {
-        console.log("decrement")
+      else
         this.items.set(item, amount - 1)
-      }
       this.cartTotal -= item.price;
-
     }
-
     else
-      console.log("doesnt contain item")
-
-    this.itemAddedSource.next({ items: this.items, cartTotal: this.cartTotal })
+      this.itemAddedSource.next({ items: this.items, cartTotal: this.cartTotal })
   }
 
 
@@ -82,7 +64,6 @@ export class CartService {
   }
 
   placeOrder() {
-    
     this.dataService.placeOrder(new Order(this.items).toJSON()).subscribe();
     this.flushCart();
   }

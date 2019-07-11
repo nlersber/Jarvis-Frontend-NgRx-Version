@@ -22,8 +22,6 @@ export class FilterContainerComponent implements OnInit {
   }
 
   applyFilter(filter: PriceFilter) {
-    console.log('filter received in container')
-    console.log(filter)
     this.dataService.changeFilter(filter)
   }
 }

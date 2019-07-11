@@ -4,7 +4,7 @@
     <!-- Begin Price filters -->
 
     <div class="filterRemove">
-        <button *ngIf="filterActive" class="btn">Remove filters</button>
+        <button *ngIf="filterActive" class="btn" (click)='removeFilter()'>Remove filters</button>
     </div>
 
     <h5>Filter by price</h5>

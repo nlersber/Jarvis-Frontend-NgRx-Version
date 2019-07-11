@@ -19,7 +19,7 @@ export class DataService {
   filter: Observable<PriceFilter>
 
   constructor(private store: Store<AppState>, private http: HttpClient) {
-    this.filter = this.store.select('filterReducer', 'filter')
+    this.filter = this.store.select('filter')
   }
 
   changeFilter(filter: PriceFilter) {
@@ -48,7 +48,6 @@ export class DataService {
   }
 
   placeOrder(items: any) {
-    console.log(JSON.stringify(items));
     const headers = new HttpHeaders().set('content-type', 'application/json');
     return this.http.post(`${environment.apiUrl}/Order/`, items, { headers })
   }
