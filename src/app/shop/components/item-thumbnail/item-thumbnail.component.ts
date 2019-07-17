@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from '../../models/item';
-import { CartService } from '../../services/cart/cart.service';
-import { DataService } from '../../services/data/data.service';
+import { Item } from '../../../models/item';
+import { CartService } from '../../../services/cart/cart.service';
+import { DataService } from '../../../services/data/data.service';
 
 @Component({
   selector: 'item-thumbnail',

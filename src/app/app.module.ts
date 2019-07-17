@@ -5,15 +5,15 @@ import { filterReducer } from "./reducers/filterReducer";
 import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './components/app-component/app.component';
-import { ShowcaseComponent } from './components/showcase/showcase.component';
-import { FiltersComponent } from './components/filters/filters/filters.component';
+import { AppComponent } from './shop/components/app-component/app.component';
+import { ShowcaseComponent } from './shop/components/showcase/showcase.component';
+import { FiltersComponent } from './shop/components/filters/filters/filters.component';
 import { PricePipe } from './pipes/price.pipe';
-import { CartComponent } from './components/cart/cart.component';
+import { CartComponent } from './shop/components/cart/cart.component';
 import { DataService } from './services/data/data.service';
 import { CartService } from './services/cart/cart.service';
-import { ItemThumbnailComponent } from './components/item-thumbnail/item-thumbnail.component';
-import { FilterContainerComponent } from './components/filters/filter-container/filter-container.component';
+import { ItemThumbnailComponent } from './shop/components/item-thumbnail/item-thumbnail.component';
+import { FilterContainerComponent } from './shop/components/filters/filter-container/filter-container.component';
 
 @NgModule({
   declarations: [

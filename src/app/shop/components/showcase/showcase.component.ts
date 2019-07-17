@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PriceFilter } from 'src/app/models/priceFilter';
 import { DataService } from 'src/app/services/data/data.service';
-import { Item } from '../../models/item';
-import { CartService } from '../../services/cart/cart.service';
+import { Item } from '../../../models/item';
+import { CartService } from '../../../services/cart/cart.service';
 
 @Component({
   selector: 'showcase',

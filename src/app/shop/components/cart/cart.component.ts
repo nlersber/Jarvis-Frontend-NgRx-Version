@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef, Output, EventEmitter } from '@angular/core';
-import { CartService } from '../../services/cart/cart.service';
+import { CartService } from '../../../services/cart/cart.service';
 import { Subscription } from 'rxjs';
-import { Item } from '../../models/item';
+import { Item } from '../../../models/item';
 
 const OFFSET_HEIGHT: number = 170
 const PRODUCT_HEIGHT: number = 48
