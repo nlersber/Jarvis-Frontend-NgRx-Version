@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 import { AuthenticationContainerComponent } from './components/authentication-container/authentication-container.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './login.routes';
 
 
 
 @NgModule({
   declarations: [AuthenticationContainerComponent, LoginComponent, RegisterComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forRoot(routes)
   ]
 })
 export class LoginModule { }
