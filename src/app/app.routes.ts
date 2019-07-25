@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
-import { AuthenticationContainerComponent } from './login/components/authentication-container/authentication-container.component';
 import { ShopContainerComponent } from './shop/components/shop-container/shop-container.component';
+import { LoginComponent } from './login/components/login/login.component';
+import { RegisterComponent } from './login/components/register/register.component';
 
 
 export const routes: Routes = [
-  {path: "auth", component: AuthenticationContainerComponent},
-  {path: "shop", component: ShopContainerComponent},
-  {path: '', redirectTo: "auth", pathMatch: "full"}
+  { path: "login", component: LoginComponent },
+  { path: "register", component: RegisterComponent },
+  { path: "shop", component: ShopContainerComponent },
+  { path: '', redirectTo: "shop", pathMatch: "full" }
 ];
 

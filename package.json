@@ -2,7 +2,7 @@
   "name": "jarvis-ng-rx",
   "version": "0.0.0",
   "scripts": {
-    "start": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve -o --proxy-config proxy.conf.json",
     "ng": "ng",
     "build": "ng build",
     "test": "ng test",

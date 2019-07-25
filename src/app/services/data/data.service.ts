@@ -27,9 +27,9 @@ export class DataService {
   }
 
   getRemoteData(): Observable<Item[]> {
-    let temp = this.http.get(`${environment.apiUrl}/item/`)
-      .pipe(map((list: any[]): Item[] => list.map(Item.fromJson))
-      );
+    let temp = this.http.get<Item[]>(`${environment.apiUrl}/item/`)
+      /*.pipe(map((list: any[]): Item[] => list.map(Item.fromJson))
+      );*/
     return temp;
   }
 

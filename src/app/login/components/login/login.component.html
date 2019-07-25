@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="container">
+    <div class="loginwrapper">
+        <form action="" [formGroup]="form" class="form-groups">
+            <div class="row">
+                <div class="offset-2 col-8">
+                    <label for="username">Username</label>
+                    <input formControlName='username' type="text" name="Username" id="username">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="offset-2 col-8">
+                    <label for="password">Password</label>
+                    <input formControlName='password' type="password" name="Username" id="password">
+                </div>
+
+            </div>
+            <div class="row">
+                <button class="btn btn-large btn-primary offset-4 col-4" (click)="next()">Click me</button>
+            </div>
+
+        </form>
+    </div>
+</div>

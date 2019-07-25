@@ -11,9 +11,13 @@
       <div>
         <hr>
         <div class="row">
-          <div class="col-12 add-cart-wrapper cartIcon" style="text-align: center;">
-            <button class="btn btn-block" style="width: 100%;" type="button" class="cart" (click)="onAddToCart()"><img src="assets/cart_primary.svg"
-                alt="" /></button>
+
+          <div class="col-12 add-cart-wrapper cartIcon">
+            <form [formGroup]="form" action="">
+              <input formControlName="amount" type="number" style="width: 25%; margin: auto">
+            </form>
+            <button class="btn btn-block" style="width: 100%;" type="button" class="cart" (click)="onAddToCart()"><img
+                src="assets/cart_primary.svg" alt="" /></button>
           </div>
         </div>
       </div>

@@ -38,8 +38,11 @@
       <p class="center">€{{cartTotal}}</p>
     </div>
 
-    <div>
-      <button class="btn-block btn-primary" (click)="placeOrder()">Place Order</button>
+    <div class="container">
+        <div class="row">
+            <button class="btn btn-primary col-sm-12 col-md-9" (click)="placeOrder()">Place Order</button>
+            <button class="btn btn-primary btn-danger col-sm-12 offset-md-1 col-md-2" (click)="clearCart()">Clear Cart</button>
+          </div>
     </div>
 
 

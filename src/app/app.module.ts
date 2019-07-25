@@ -13,9 +13,11 @@ import { CartService } from './services/cart/cart.service';
 import { ItemThumbnailComponent } from './shop/components/item-thumbnail/item-thumbnail.component';
 import { FilterContainerComponent } from './shop/components/filters/filter-container/filter-container.component';
 import { ShopContainerComponent } from './shop/components/shop-container/shop-container.component';
-import { LoginModule } from './login/login.module';
 import { RouterModule } from '@angular/router';
 import { routes } from './app.routes';
+import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './login/components/login/login.component';
+import { RegisterComponent } from './login/components/register/register.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { routes } from './app.routes';
     CartComponent,
     ItemThumbnailComponent,
     FilterContainerComponent,
-    ShopContainerComponent
+    ShopContainerComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,7 @@ import { routes } from './app.routes';
       filter: filterReducer
     }),
     HttpClientModule,
-    LoginModule
+    ReactiveFormsModule
   ],
   providers: [
     DataService,

@@ -27,23 +27,24 @@ export class CartService {
   }
 
 
-  addItemToCart(item) {
-    this.cartTotal += item.price;
+  addItemToCart(item: Item, amount: number) {
+    this.cartTotal += item.price*amount;
     //Search this product on the cart and increment the quantity
 
     if (this.containsItem(item)) {
       let old: number = this.items.get(item);
-      this.items.set(item, old + 1);
+      this.items.set(item, +old + +amount);
     }
     //Add a new product to the cart if it's a new product
     else {
-      this.items.set(item, 1);
+      this.items.set(item, amount);
     }
 
     this.itemAddedSource.next({ items: this.items, cartTotal: this.cartTotal })
   }
 
   deleteItemFromCart(item) {
+    console.log(item)
     if (this.containsItem(item)) {
       let amount: number = this.items.get(item)
       if (amount === 1)
@@ -52,8 +53,7 @@ export class CartService {
         this.items.set(item, amount - 1)
       this.cartTotal -= item.price;
     }
-    else
-      this.itemAddedSource.next({ items: this.items, cartTotal: this.cartTotal })
+    this.itemAddedSource.next({ items: this.items, cartTotal: this.cartTotal })
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PriceFilter } from 'src/app/models/priceFilter';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'filters',
@@ -16,7 +17,12 @@ export class FiltersComponent implements OnInit {
 
   filterActive = false;
 
+  form: FormGroup
+
   constructor() {
+    this.form=new FormGroup({
+      
+    })
   }
 
   ngOnInit() {
