@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Item } from '../models/item';
-import { PriceFilter } from '../models/priceFilter';
+import { Item } from '../../models/item';
+import { PriceFilter } from '../../models/priceFilter';
 
 @Pipe({
   name: 'price'
@@ -15,6 +15,7 @@ export class PricePipe implements PipeTransform {
 
     const filter: PriceFilter = args
 
+    
     return !!!filter ?
       value :
       value.filter(s => filter.apply(s.price))

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
 import { PriceFilter } from 'src/app/models/priceFilter';
 import { DataService } from 'src/app/services/data/data.service';
 import { Item } from '../../../models/item';
 import { CartService } from '../../../services/cart/cart.service';
-import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'showcase',
@@ -16,16 +16,21 @@ export class ShowcaseComponent implements OnInit {
   items: Observable<Item[]>
   priceFilter: PriceFilter
   readonly defaultFilter: PriceFilter = new PriceFilter('all', 0)
+  searchTerm: Subject<string> = new Subject()
 
   form: FormGroup
 
-  constructor(private dataService: DataService, private cartService: CartService) {
+  constructor(private dataService: DataService, private cartService: CartService, fb: FormBuilder) {
     this.items = this.dataService.getRemoteData()
     this.priceFilter = new PriceFilter('all', 0)
     this.dataService.filter.pipe().subscribe(s => {
       this.priceFilter = !!s
         ? s
         : this.defaultFilter
+    })
+
+    this.form = fb.group({
+      search: fb.control('')
     })
   }
 
@@ -36,6 +41,10 @@ export class ShowcaseComponent implements OnInit {
     const item: Item = event.item
     const amount: number = event.amount
     this.cartService.addItemToCart(item, amount)
+  }
+
+  searchName() {
+    this.searchTerm.next(this.form.get('search').value)
   }
 
 }

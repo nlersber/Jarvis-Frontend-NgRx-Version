@@ -1,6 +1,6 @@
 export class Item {
 
-    private _imgSrc: string
+    public imgSrc: string
 
     /**
      *
@@ -12,7 +12,6 @@ export class Item {
         private _type: number,
         private _count: number,
     ) {
-        this._imgSrc = "assets/img/" + this.name.replace(" ", "_").toLowerCase() + ".png"
     }
 
     get id(): number {
@@ -34,9 +33,6 @@ export class Item {
         return this._count
     }
 
-    get imgSrc(): string {
-        return this._imgSrc
-    }
 
     subtractCount(num: number) {
         this._count -= num

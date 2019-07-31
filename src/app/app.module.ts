@@ -6,7 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app-component/app.component';
 import { ShowcaseComponent } from './shop/components/showcase/showcase.component';
 import { FiltersComponent } from './shop/components/filters/filters/filters.component';
-import { PricePipe } from './pipes/price.pipe';
+import { PricePipe } from './pipes/price/price.pipe';
 import { CartComponent } from './shop/components/cart/cart.component';
 import { DataService } from './services/data/data.service';
 import { CartService } from './services/cart/cart.service';
@@ -18,6 +18,7 @@ import { routes } from './app.routes';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/components/login/login.component';
 import { RegisterComponent } from './login/components/register/register.component';
+import { SearchPipe } from './pipes/search/search.pipe';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { RegisterComponent } from './login/components/register/register.componen
     FilterContainerComponent,
     ShopContainerComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

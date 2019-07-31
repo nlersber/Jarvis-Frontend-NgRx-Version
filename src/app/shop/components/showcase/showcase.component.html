@@ -1,5 +1,18 @@
 <div class="row">
-  <item-thumbnail *ngFor="let item of (items | async | price : priceFilter)" [item]="item"
-    (onAdd)="addItemToCart($event)" class="col-sm-12 col-md-6 col-lg-4 item" style="margin-bottom: 50px;">
+  <div class="offset-sm-2 offset-md-8 col-sm-8 col-md-3" style="padding-bottom: 10px;">
+    <form [formGroup]="form">
+      <div class="searchWrapper">
+        <input type="text" (keyup)="searchName()" formControlName="search" name="search" id="search"
+          placeholder="Search...">
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <item-thumbnail
+    *ngFor="let item of (items | async | price : priceFilter | search : (searchTerm | async)); let i=index"
+    [item]="item" (onAdd)="addItemToCart($event)" class="col-sm-12 col-md-6 col-lg-4 item"
+    style="margin-bottom: 50px;">
   </item-thumbnail>
 </div>
