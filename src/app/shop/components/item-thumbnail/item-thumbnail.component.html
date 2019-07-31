@@ -1,7 +1,7 @@
 <div class="wrapper">
   <div [className]="available?unavailable:info">
     <div class="img-wrapper">
-      <img class="img" [src]="dataService.getImage(item.name)">
+      <img class="img" [src]="item.imgSrc">
       <div class="img-placeholder"></div>
     </div>
 
@@ -14,7 +14,9 @@
 
           <div class="col-12 add-cart-wrapper cartIcon">
             <form [formGroup]="form" action="">
-              <input formControlName="amount" type="number" style="width: 25%; margin: auto">
+              <div [ngClass]="{'error': form.get('amount').error}">
+                <input formControlName="amount" type="number" style="width: 25%; margin: auto">
+              </div>
             </form>
             <button class="btn btn-block" style="width: 100%;" type="button" class="cart" (click)="onAddToCart()"><img
                 src="assets/cart_primary.svg" alt="" /></button>

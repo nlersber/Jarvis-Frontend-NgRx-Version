@@ -1,8 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Item } from '../../../models/item';
-import { CartService } from '../../../services/cart/cart.service';
-import { DataService } from '../../../services/data/data.service';
-import { FormControl, FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: 'item-thumbnail',
@@ -11,18 +9,18 @@ import { FormControl, FormGroup, FormBuilder, Validators } from "@angular/forms"
 })
 export class ItemThumbnailComponent implements OnInit {
 
-  @Input() item: Item;
+  @Input() item: Item
+  @Output() onAdd: EventEmitter<{ item: Item, amount: number }> = new EventEmitter()
 
   available: boolean
-  imageSrc: string;
+  imageSrc: string
 
   form: FormGroup
 
-  constructor(private cartService: CartService, private dataService: DataService) {
-    this.form = new FormGroup({
-      amount: new FormControl('1', Validators.required)
+  constructor(builder: FormBuilder) {
+    this.form = builder.group({
+      amount: builder.control('1', Validators.required)
     })
-    //this.form.get('amount').setValue(1)
   }
 
   ngOnInit() {
@@ -33,9 +31,10 @@ export class ItemThumbnailComponent implements OnInit {
   onAddToCart() {
     if (!this.form.valid)
       return
-
     const amount = <number>this.form.get("amount").value
-    this.cartService.addItemToCart(this.item, amount)
+    this.onAdd.emit({ item: this.item, amount })
+    this.form.get('amount').setValue('1')
+    this.form.get('amount').updateValueAndValidity()
   }
 
 }

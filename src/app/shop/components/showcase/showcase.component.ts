@@ -4,6 +4,7 @@ import { PriceFilter } from 'src/app/models/priceFilter';
 import { DataService } from 'src/app/services/data/data.service';
 import { Item } from '../../../models/item';
 import { CartService } from '../../../services/cart/cart.service';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'showcase',
@@ -16,6 +17,8 @@ export class ShowcaseComponent implements OnInit {
   priceFilter: PriceFilter
   readonly defaultFilter: PriceFilter = new PriceFilter('all', 0)
 
+  form: FormGroup
+
   constructor(private dataService: DataService, private cartService: CartService) {
     this.items = this.dataService.getRemoteData()
     this.priceFilter = new PriceFilter('all', 0)
@@ -27,6 +30,12 @@ export class ShowcaseComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  addItemToCart(event) {
+    const item: Item = event.item
+    const amount: number = event.amount
+    this.cartService.addItemToCart(item, amount)
   }
 
 }
