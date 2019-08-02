@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data/data.service';
+import { Observable } from 'rxjs';
+import { Item } from 'src/app/models/item';
 
 @Component({
   selector: 'items',
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemsComponent implements OnInit {
 
-  constructor() { }
+  private items: Observable<Item[]>
+
+  constructor(private dataService: DataService) {
+    this.items = this.dataService.getRemoteData()
+  }
 
   ngOnInit() {
   }

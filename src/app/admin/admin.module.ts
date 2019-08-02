@@ -7,8 +7,7 @@ import { ManagementService } from './services/management.service';
 
 const routes: Routes = [
   { path: "management/items", component: ItemsComponent },
-  { path: "management/users", component: UsersComponent },
-  { path: 'management', redirectTo: "management/items", pathMatch: "full" }
+  { path: "management/users", component: UsersComponent }
 ];
 
 @NgModule({
