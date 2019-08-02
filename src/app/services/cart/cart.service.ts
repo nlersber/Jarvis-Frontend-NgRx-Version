@@ -65,6 +65,7 @@ export class CartService {
 
   placeOrder() {
     this.dataService.placeOrder(new Order(this.items).toJSON()).subscribe();
+    this.dataService.triggerReloadItems()
     this.flushCart();
   }
 

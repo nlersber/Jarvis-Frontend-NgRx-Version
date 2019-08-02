@@ -11,8 +11,8 @@ export class ManagementService {
 
   constructor(private http: HttpClient) { }
 
-  getUserList(): Observable<User> {
-    return this.http.get<User>(`${environment.apiUrl}/account/managementusers`)
+  getUserList(): Observable<User[]> {
+    return this.http.get<User[]>(`${environment.apiUrl}/account/managementusers`)
   }
 
 }
