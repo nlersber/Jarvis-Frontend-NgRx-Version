@@ -21,6 +21,7 @@ export class ShowcaseComponent implements OnInit {
   form: FormGroup
 
   constructor(private dataService: DataService, private cartService: CartService, fb: FormBuilder) {
+    this.dataService.refresh.subscribe(s => this.items = this.dataService.getRemoteData())//Triggers a refresh each time the subject updates
     this.items = this.dataService.getRemoteData()
     this.priceFilter = new PriceFilter('all', 0)
     this.dataService.filter.pipe().subscribe(s => {

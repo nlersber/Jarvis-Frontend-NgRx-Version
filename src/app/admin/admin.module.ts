@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Route, Routes } from '@angular/router';
-import { ItemsComponent } from './management/items/items.component';
-import { UsersComponent } from './management/users/users.component';
+import { ItemsComponent } from './components/items/items.component';
+import { UsersComponent } from './components/users/users.component';
+import { ManagementService } from './services/management.service';
 
 const routes: Routes = [
   { path: "management/items", component: ItemsComponent },
@@ -14,6 +15,9 @@ const routes: Routes = [
   declarations: [],
   imports: [
     CommonModule
+  ],
+  providers: [
+    ManagementService
   ]
 })
 export class AdminModule { }

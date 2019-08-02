@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ManagementService } from '../../services/management.service';
 
 @Component({
   selector: 'management',
@@ -7,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagementComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor(private service: ManagementService) { }
 
   ngOnInit() {
   }

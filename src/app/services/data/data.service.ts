@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { map } from 'rxjs/operators';
 import { PriceFilter } from 'src/app/models/priceFilter';
 import { environment } from '../../../environments/environment';
@@ -17,6 +17,7 @@ export interface AppState {
 export class DataService {
 
   filter: Observable<PriceFilter>
+  refresh: Subject<any> = new Subject()
 
   constructor(private store: Store<AppState>, private http: HttpClient) {
     this.filter = this.store.select('filter')
@@ -51,5 +52,9 @@ export class DataService {
   placeOrder(items: any) {
     const headers = new HttpHeaders().set('content-type', 'application/json')
     return this.http.post(`${environment.apiUrl}/Order/`, items, { headers })
+  }
+
+  triggerReloadItems() {
+    this.refresh.next()
   }
 }
