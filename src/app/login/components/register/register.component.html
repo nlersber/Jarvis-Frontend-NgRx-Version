@@ -1,5 +1,5 @@
 <div class="container">
-    <form formGroup="user">
+    <form formGroup="user" (ngSubmit)="onSubmit()">
         <div>
 
             <div class="row">
@@ -31,6 +31,10 @@
                     class="col-12 errorMessage">Confirmation of your password is required</p>
             </div>
 
+            <div class="row">
+                <button type="submit">Register</button>
+                <button><a [routerLink]="[ '/login']">Login</a></button>
+            </div>
         </div>
     </form>
 </div>

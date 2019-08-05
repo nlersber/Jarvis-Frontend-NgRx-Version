@@ -30,6 +30,11 @@ export class AuthenticationService {
     this.user$ = new BehaviorSubject<string>(parsedToken && parsedToken.unique_name)
   }
 
+  get token(): string {
+    const localToken = localStorage.getItem(this.tokenKey)
+    return !!localToken ? localToken : ''
+  }
+
 
 
   login(username: string, password: string): Observable<boolean> {

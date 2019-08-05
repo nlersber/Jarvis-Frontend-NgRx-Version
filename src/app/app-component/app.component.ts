@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/services/data/data.service';
+import { Router } from '@angular/router';
 
 
 
@@ -11,4 +10,10 @@ import { AppState } from 'src/app/services/data/data.service';
 })
 export class AppComponent {
   title = 'JarvisNgRx';
+
+  constructor(private router: Router) { }
+
+  navigate(s) {
+    this.router.navigate(s)
+  }
 }

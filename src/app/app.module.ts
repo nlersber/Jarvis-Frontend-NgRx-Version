@@ -19,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/components/login/login.component';
 import { RegisterComponent } from './login/components/register/register.component';
 import { SearchPipe } from './pipes/search/search.pipe';
+import { AuthModule } from './login/auth.module';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { SearchPipe } from './pipes/search/search.pipe';
       filter: filterReducer
     }),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule
   ],
   providers: [
     DataService,
