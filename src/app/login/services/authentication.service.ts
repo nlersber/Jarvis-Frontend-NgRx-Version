@@ -18,6 +18,8 @@ export class AuthenticationService {
   private readonly tokenKey = 'currentUser'
   private user$: BehaviorSubject<string>
 
+  public redirectUrl: string
+
   constructor(private http: HttpClient) {
     let parsedToken = parseJwt(localStorage.getItem(this.tokenKey))
     if (parsedToken) {
@@ -33,6 +35,10 @@ export class AuthenticationService {
   get token(): string {
     const localToken = localStorage.getItem(this.tokenKey)
     return !!localToken ? localToken : ''
+  }
+
+  get user(): BehaviorSubject<string> {
+    return this.user$
   }
 
 

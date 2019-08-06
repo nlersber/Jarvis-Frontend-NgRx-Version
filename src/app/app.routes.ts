@@ -1,13 +1,11 @@
 import { Routes } from '@angular/router';
-import { ShopContainerComponent } from './shop/components/shop-container/shop-container.component';
-import { LoginComponent } from './login/components/login/login.component';
-import { RegisterComponent } from './login/components/register/register.component';
+import { AuthGuard } from './login/guard/auth.guard';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 export const routes: Routes = [
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "shop", component: ShopContainerComponent },
+  { path: "shop", canActivate: [AuthGuard], loadChildren: './shop/shop.module#ShopModule' },
+  { path: '**', component: PagenotfoundComponent},
   { path: '', redirectTo: "shop", pathMatch: "full" }
 ];
 

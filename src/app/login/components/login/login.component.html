@@ -1,9 +1,9 @@
 <div class="container">
     <div class="loginwrapper">
-        <form action="" [formGroup]="form" class="form-groups">
+        <form action="" [formGroup]="form" class="form-groups" (ngSubmit)="onSubmit()">
             <div class="row">
                 <div class="offset-2 col-8">
-                    <label for="username">Username</label>
+                    <label for="username">Email</label>
                     <input formControlName='username' type="text" name="Username" id="username">
                 </div>
 
@@ -17,7 +17,7 @@
 
             </div>
             <div class="row">
-                <button class="btn btn-large btn-primary offset-4 col-4" (click)="next()">Click me</button>
+                <button type="submit" class="btn btn-large btn-primary offset-4 col-4">Click me</button>
             </div>
 
         </form>

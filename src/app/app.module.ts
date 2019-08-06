@@ -1,40 +1,23 @@
-import { StoreModule } from '@ngrx/store';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { filterReducer } from "./reducers/filterReducer";
 import { HttpClientModule } from "@angular/common/http";
-import { AppComponent } from './app-component/app.component';
-import { ShowcaseComponent } from './shop/components/showcase/showcase.component';
-import { FiltersComponent } from './shop/components/filters/filters/filters.component';
-import { PricePipe } from './pipes/price/price.pipe';
-import { CartComponent } from './shop/components/cart/cart.component';
-import { DataService } from './services/data/data.service';
-import { CartService } from './services/cart/cart.service';
-import { ItemThumbnailComponent } from './shop/components/item-thumbnail/item-thumbnail.component';
-import { FilterContainerComponent } from './shop/components/filters/filter-container/filter-container.component';
-import { ShopContainerComponent } from './shop/components/shop-container/shop-container.component';
-import { RouterModule } from '@angular/router';
-import { routes } from './app.routes';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent } from './login/components/login/login.component';
-import { RegisterComponent } from './login/components/register/register.component';
-import { SearchPipe } from './pipes/search/search.pipe';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { AppComponent } from './app-component/app.component';
+import { routes } from './app.routes';
 import { AuthModule } from './login/auth.module';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { filterReducer } from "./reducers/filterReducer";
+import { CartService } from './services/cart/cart.service';
+import { DataService } from './services/data/data.service';
+import { ShopModule } from './shop/shop.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShowcaseComponent,
-    FiltersComponent,
-    PricePipe,
-    CartComponent,
-    ItemThumbnailComponent,
-    FilterContainerComponent,
-    ShopContainerComponent,
-    LoginComponent,
-    RegisterComponent,
-    SearchPipe
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +26,8 @@ import { AuthModule } from './login/auth.module';
       filter: filterReducer
     }),
     HttpClientModule,
-    ReactiveFormsModule,
-    AuthModule
+    AuthModule,
+    ShopModule
   ],
   providers: [
     DataService,
