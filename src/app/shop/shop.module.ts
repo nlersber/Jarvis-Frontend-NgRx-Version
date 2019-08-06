@@ -11,11 +11,6 @@ import { ShopContainerComponent } from './components/shop-container/shop-contain
 import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-
-const routes: Routes = [
-  { path: 'shop', component: ShopContainerComponent }
-]
-
 @NgModule({
   declarations: [
     SearchPipe,
@@ -28,7 +23,6 @@ const routes: Routes = [
     ShopContainerComponent,
   ],
   imports: [
-    RouterModule.forChild(routes),
     ReactiveFormsModule,
     CommonModule
   ]
