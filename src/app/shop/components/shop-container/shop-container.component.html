@@ -1,6 +1,12 @@
 <header>
-  <nav>
-    <button (click)="navigate('item')">Item management</button>
+  <nav class="nav">
+    <div style="width: 50%; border: 1px solid red;"></div>
+    <div style="width: 50%; border: 1px solid green; display: flex; justify-content: space-between;">
+      <div>Name</div>
+      <div>Credit</div>
+      <div><button class="btn btn-outline-primary" style="height: 100%">History</button></div>
+      <div><button class="btn btn-danger" style="height: 100%">Logout</button></div>
+    </div>
   </nav>
 </header>
 

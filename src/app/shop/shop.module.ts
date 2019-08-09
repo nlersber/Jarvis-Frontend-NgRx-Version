@@ -2,8 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { ItemsComponent } from '../admin/components/items/items.component';
-import { UsersComponent } from '../admin/components/users/users.component';
 import { AuthGuard } from '../login/guard/auth.guard';
 import { PricePipe } from '../pipes/price/price.pipe';
 import { SearchPipe } from '../pipes/search/search.pipe';
@@ -17,8 +15,6 @@ import { ShowcaseComponent } from './components/showcase/showcase.component';
 const routes: Routes = [
   { path: '', redirectTo: 'shop', pathMatch: 'full' },
   { path: 'shop', canActivate: [AuthGuard], component: ShopContainerComponent },
-  { path: 'itemManagement', component: ItemsComponent },
-  { path: 'userManagement', component: UsersComponent }
 ]
 
 
@@ -32,8 +28,6 @@ const routes: Routes = [
     ItemThumbnailComponent,
     FilterContainerComponent,
     ShopContainerComponent,
-    ItemsComponent,
-    UsersComponent
   ],
   imports: [
     ReactiveFormsModule,
