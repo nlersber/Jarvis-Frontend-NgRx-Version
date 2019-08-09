@@ -44,7 +44,8 @@ export class AuthenticationService {
 
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post(`${environment.apiUrl}/account`, { username, password }, { responseType: 'text' })
+    const temp = new LoginDTO(username, password)
+    return this.http.post(`${environment.apiUrl}/account`, temp, { responseType: 'text' })
       .pipe(map(token => {
         if (token) {
           localStorage.setItem(this.tokenKey, token)
@@ -56,8 +57,9 @@ export class AuthenticationService {
   }
 
   register(name: string, email: string, password: string): Observable<boolean> {
+    const temp = new RegisterDTO(name, email, password)
     return this.http.post(`${environment.apiUrl}/account/register`,
-      { name, email, password, passwordConfirmation: password },
+      temp,
       { responseType: 'text' })
       .pipe(map(token => {
         if (token) {
@@ -81,4 +83,11 @@ export class AuthenticationService {
       { params: { name } })
   }
 
+}
+
+class LoginDTO {
+  constructor(public username: string, public password: string) { }
+}
+class RegisterDTO {
+  constructor(public username: string, public email: string, public password: string) { }
 }

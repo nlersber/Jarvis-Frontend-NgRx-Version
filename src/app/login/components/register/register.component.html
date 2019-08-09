@@ -1,40 +1,46 @@
 <div class="container">
-    <form formGroup="user" (ngSubmit)="onSubmit()">
-        <div>
+    <div class="loginwrapper">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div>
 
-            <div class="row">
-                <label class="col-12" for="name">Username</label>
-                <input class="col-12" formControlName="name" type="text" name="name" id="name">
-                <p *ngIf="user.get('name').errors && user.get('name').touched" class="col-12 errorMessage">Username is
-                    required. Minimum length is 6.</p>
-            </div>
+                <div class="row" class="form-groups">
+                    <label class="col-12" for="name">Username</label>
+                    <input class="col-12" formControlName="username" type="text" name="name" id="name">
+                    <p *ngIf="form.get('username').errors && form.get('username').touched" class="col-12 errorMessage">
+                        Username is required. Length between 6 and12. Username might already be in use.</p>
+                </div>
 
-            <div class="row">
-                <label class="col-12" for="email">Email</label>
-                <input class="col-12" formControlName="email" type="email" name="email" id="email">
-                <p *ngIf="user.get('email').errors && user.get('email').touched" class="col-12 errorMessage">Email is
-                    required. Please check the formatting</p>
-            </div>
+                <div class="row" class="form-groups">
+                    <label class="col-12" for="email">Email</label>
+                    <input class="col-12" formControlName="email" type="email" name="email" id="email">
+                    <p *ngIf="form.get('email').errors && form.get('email').touched" class="col-12 errorMessage">Email
+                        is
+                        required. Please check the formatting</p>
+                </div>
 
-            <div class="row">
-                <label class="col-12" for="pass">Password</label>
-                <input class="col-12" formControlName="password" type="password" name="pas" id="pass">
-                <p *ngIf="user.get('password').errors && user.get('password').touched" class="col-12 errorMessage">
-                    Password is
-                    required</p>
-            </div>
+                <form formGroupName="passwordGroup">
+                    <div class="row" class="form-groups">
+                        <label class="col-12" for="pass">Password</label>
+                        <input class="col-12" formControlName="password" type="password" name="pas" id="pass">
+                        <p *ngIf="form.get('passwordGroup').get('password').errors && form.get('passwordGroup').get('password').touched"
+                            class="col-12 errorMessage">
+                            Password is
+                            required</p>
+                    </div>
 
-            <div class="row">
-                <label class="col-12" for="passConfirm">Confirm password</label>
-                <input class="col-12" type="password" name="passConfirm" id="passConfirm">
-                <p *ngIf="user.get('passConfirm').errors && user.get('passConfirm').touched"
-                    class="col-12 errorMessage">Confirmation of your password is required</p>
-            </div>
+                    <div class="row" class="form-groups">
+                        <label class="col-12" for="passwordConfirm">Confirm password</label>
+                        <input class="col-12" type="password" name="passConfirm" id="passConfirm">
+                        <p *ngIf="form.get('passwordGroup').get('passwordConfirm').errors && form.get('passwordGroup').get('passwordConfirm').touched"
+                            class="col-12 errorMessage">Confirmation of your password is required</p>
+                    </div>
+                </form>
 
-            <div class="row">
-                <button type="submit">Register</button>
-                <button><a [routerLink]="[ '/login']">Login</a></button>
+                <div class="row">
+                    <button type="submit">Register</button>
+                    <button><a [routerLink]="[ '/login']">Login</a></button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

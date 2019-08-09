@@ -1,17 +1,25 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
+import { ItemsComponent } from './admin/components/items/items.component';
+import { UsersComponent } from './admin/components/users/users.component';
 import { AppComponent } from './app-component/app.component';
-import { routes } from './app.routes';
 import { AuthModule } from './login/auth.module';
+import { AuthGuard } from './login/guard/auth.guard';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { filterReducer } from "./reducers/filterReducer";
 import { CartService } from './services/cart/cart.service';
 import { DataService } from './services/data/data.service';
 import { ShopModule } from './shop/shop.module';
 
+const routes: Routes = [
+  // { path: '', redirectTo: 'shop', pathMatch: 'full' },
+ // { path: 'shop', canActivate: [AuthGuard], loadChildren: './shop/shop.module#ShopModule' },
+
+  // { path: '**', component: PagenotfoundComponent }
+];
 
 @NgModule({
   declarations: [
@@ -28,6 +36,7 @@ import { ShopModule } from './shop/shop.module';
     AuthModule,
     ShopModule
   ],
+  exports: [RouterModule],
   providers: [
     DataService,
     CartService

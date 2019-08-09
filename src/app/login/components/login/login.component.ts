@@ -43,11 +43,15 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl(this.authService.redirectUrl)
           this.authService.redirectUrl = undefined
         } else {
-          this.router.navigate(['/shop'])
+          this.router.navigate(['shop'])
         }
       }
     } //TODO: error msg
     )
+  }
+
+  toRegister(){
+    this.router.navigate(['register'])
   }
 
 }

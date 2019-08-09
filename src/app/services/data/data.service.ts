@@ -17,7 +17,8 @@ export interface AppState {
 export class DataService {
 
   filter: Observable<PriceFilter>
-  refresh: Subject<any> = new Subject()
+  refresh: Subject<any>
+   = new Subject()
 
   constructor(private store: Store<AppState>, private http: HttpClient) {
     this.filter = this.store.select('filter')
