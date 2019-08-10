@@ -1,18 +1,25 @@
-.loginwrapper{
-    width: 25%;
-    margin: auto;
-    margin-top: 25%;
-    border: 2px solid green;
-    padding-top: 30px;
-    border-radius: 10px;
-    background-color: azure;
+.loginwrapper {
+  width: 25%;
+  margin: auto;
+  margin-top: 10%;
+  border: 2px solid green;
+  padding-top: 30px;
+  border-radius: 10px;
+  background-color: azure;
 }
 
-.row{
-    padding-top: 20px;
+.row {
+  padding-top: 20px;
 
-    button{
-        margin-bottom: 20px;
-    }
+  button {
+    margin-bottom: 20px;
+  }
 }
 
+#title {
+  width: 100%;
+  h1 {
+    width: 100%;
+    text-align: center;
+  }
+}

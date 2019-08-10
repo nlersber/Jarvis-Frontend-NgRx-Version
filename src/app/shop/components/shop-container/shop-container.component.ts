@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/login/services/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'shop-container',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopContainerComponent implements OnInit {
 
-  constructor() { }
+  private user: User
+  private name: string = ''
+  private balance: number = 0
 
-  ngOnInit() {
+  constructor(private auth: AuthenticationService, private router: Router) {
+
   }
 
+  ngOnInit() {
+    this.auth.getUser().subscribe(s => {
+      this.user = s
+      this.name = s.name
+      this.balance = s.balance
+    })
+  }
+
+  logout() {
+    this.auth.logout()
+    this.router.navigate(['login'])
+  }
+
+}
+
+export class User {
+  constructor(public readonly name: string, public readonly email: string, public balance: number) { }
 }

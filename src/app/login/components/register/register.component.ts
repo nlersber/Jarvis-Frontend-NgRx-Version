@@ -19,8 +19,8 @@ export class RegisterComponent implements OnInit {
     this.form = this.builder.group({
 
       username: this.builder.control('', [Validators.required, Validators.minLength(6), Validators.maxLength(12),
-         Validators.pattern(new RegExp("[^@]"))/*, serverSideValidateUsername(this.authService.checkUserNameAvailability)*/]),
-      
+      Validators.pattern(new RegExp("[^@]"))/*, serverSideValidateUsername(this.authService.checkUserNameAvailability)*/]),
+
       email: this.builder.control('', [Validators.required, Validators.pattern(new RegExp("@"))]),
       passwordGroup: this.builder.group({
         password: this.builder.control('', [Validators.required, Validators.minLength(8)]),
@@ -41,6 +41,10 @@ export class RegisterComponent implements OnInit {
       }
     } //TODO: error msg
     )
+  }
+
+  toLogin() {
+    this.router.navigate(['login'])
   }
 
 }

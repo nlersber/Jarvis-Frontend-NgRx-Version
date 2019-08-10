@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { User } from 'src/app/shop/components/shop-container/shop-container.component';
 
 function parseJwt(token) {
   if (!token)
@@ -41,7 +42,7 @@ export class AuthenticationService {
     return this.user$
   }
 
-
+  return
 
   login(username: string, password: string): Observable<boolean> {
     const temp = new LoginDTO(username, password)
@@ -76,6 +77,10 @@ export class AuthenticationService {
       localStorage.removeItem('currentUser')
       this.user$.next(null)
     }
+  }
+
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${environment.apiUrl}/account/getuser`, { params: { name: this.user$.getValue() } })
   }
 
   checkUserNameAvailability = (name: string): Observable<boolean> => {

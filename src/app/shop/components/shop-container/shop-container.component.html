@@ -1,14 +1,19 @@
-<header>
-  <nav class="nav">
-    <div style="width: 50%; border: 1px solid red;"></div>
-    <div style="width: 50%; border: 1px solid green; display: flex; justify-content: space-between;">
-      <div>Name</div>
-      <div>Credit</div>
-      <div><button class="btn btn-outline-primary" style="height: 100%">History</button></div>
-      <div><button class="btn btn-danger" style="height: 100%">Logout</button></div>
+<div class="row topbar">
+  <div style="width: 50%;" class=" flexbetween nav offset-xs-0 offset-sm-6 col-xs-12 col-sm-6">
+
+    <div id="info" class="flexbetween">
+      <div class="paddedleft">{{name}}</div>
+      <div class="paddedleft">{{balance | currency:'EUR':true:'1.2-2'}}</div>
     </div>
-  </nav>
-</header>
+
+    <div id="buttons" class="flexbetween">
+      <div><button class="btn btn-outline-primary" style="height: 100%">History</button></div>
+      <div style="padding-left: 10px;"><button class="btn btn-danger" style="height: 100%;"
+          (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="main-container">
   <!-- Begin container -->

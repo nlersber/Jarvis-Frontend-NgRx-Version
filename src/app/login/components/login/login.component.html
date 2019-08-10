@@ -1,28 +1,42 @@
 <div class="container">
+
+    <div id="title">
+        <h1>Jarvis</h1>
+    </div>
+
     <div class="loginwrapper">
         <form action="" [formGroup]="form" class="form-groups" (ngSubmit)="onSubmit()">
-            <div class="row">
-                <div class="offset-2 col-8">
-                    <label for="username">Email</label>
-                    <input formControlName='username' type="text" name="Username" id="username">
+            <fieldset>
+                <legend style="text-align: center;">Login</legend>
+
+                <div class="row">
+                    <div class="offset-2 col-8">
+                        <label for="username">Email</label>
+                        <input formControlName='username' type="text" name="Username" id="username">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-8">
+                        <p *ngIf=""></p>
+                        <label for="password">Password</label>
+                        <input formControlName='password' type="password" name="Username" id="password">
+                    </div>
+
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-large btn-primary offset-4 col-4">Login</button>
                 </div>
 
-            </div>
-            <div class="row">
-                <div class="offset-2 col-8">
-                    <p *ngIf=""></p>
-                    <label for="password">Password</label>
-                    <input formControlName='password' type="password" name="Username" id="password">
+                <div class="row">
+                    <small style="padding-top: 10px;" class="offset-4 col-4">No account yet?</small>
                 </div>
 
-            </div>
-            <div class="row">
-                <button type="submit" class="btn btn-large btn-primary offset-4 col-4">Click me</button>
-            </div>
-            <div>
-                <button (click)="toRegister()">Register</button>
-            </div>
+                <div class="row">
 
+                    <button class="btn btn-large btn-primary offset-4 col-4" (click)="toRegister()">Register</button>
+                </div>
+            </fieldset>
         </form>
     </div>
 </div>
