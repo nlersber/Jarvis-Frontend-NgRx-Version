@@ -1,16 +1,15 @@
 export class OrderItem {
-    private _id: number
-    private _count: number
-
-    constructor(id: number, count: number) {
-        this._id = id
-        this._count = count
+    constructor(public id: number, public count: number) {
     }
 
     toJSON(): any {
         return {
-            id: this._id,
-            count: this._count
+            id: this.id,
+            count: this.count
         };
     }
+}
+
+export class HistoryOrderItem {
+    constructor(public name: string, public count: number) { }
 }

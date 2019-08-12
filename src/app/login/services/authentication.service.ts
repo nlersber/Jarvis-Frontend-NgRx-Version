@@ -1,9 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { User } from 'src/app/shop/components/shop-container/shop-container.component';
+import { HistoryOrder } from 'src/app/models/order';
+import { User } from 'src/app/shop/components/maincontainer/maincontainer.component';
+import { environment } from 'src/environments/environment';
 
 function parseJwt(token) {
   if (!token)
@@ -86,6 +87,10 @@ export class AuthenticationService {
   checkUserNameAvailability = (name: string): Observable<boolean> => {
     return this.http.get<boolean>(`${environment.apiUrl}/account/checkusername`,
       { params: { name } })
+  }
+
+  getOrders(): Observable<HistoryOrder[]> {
+    return this.http.get<HistoryOrder[]>(`${environment.apiUrl}/order`, { params: { name: this.user$.getValue() } })
   }
 
 }

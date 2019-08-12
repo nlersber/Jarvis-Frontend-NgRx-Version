@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/login/services/authentication.service';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { User } from '../maincontainer/maincontainer.component';
 
 @Component({
   selector: 'shop-container',
@@ -13,25 +14,14 @@ export class ShopContainerComponent implements OnInit {
   private name: string = ''
   private balance: number = 0
 
-  constructor(private auth: AuthenticationService, private router: Router) {
-
-  }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.auth.getUser().subscribe(s => {
+    this.userService.user.subscribe(s => {
       this.user = s
       this.name = s.name
       this.balance = s.balance
     })
   }
 
-  logout() {
-    this.auth.logout()
-    this.router.navigate(['login'])
-  }
-
-}
-
-export class User {
-  constructor(public readonly name: string, public readonly email: string, public balance: number) { }
 }

@@ -12,10 +12,10 @@ import { DataService } from './services/data/data.service';
 import { ShopModule } from './shop/shop.module';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'shop', pathMatch: 'full' },
- // { path: 'shop', canActivate: [AuthGuard], loadChildren: './shop/shop.module#ShopModule' },
+  { path: '', redirectTo: 'shop', pathMatch: 'full' },
+  // { path: 'shop', canActivate: [AuthGuard], loadChildren: './shop/shop.module#ShopModule' },
 
-  // { path: '**', component: PagenotfoundComponent }
+  { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({

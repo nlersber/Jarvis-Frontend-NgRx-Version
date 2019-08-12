@@ -1,0 +1,19 @@
+<div class="row topbar">
+    <div style="width: 50%;" class=" flexbetween nav offset-xs-0 offset-sm-6 col-xs-12 col-sm-6">
+
+        <div id="info" class="flexbetween">
+            <div class="paddedleft">{{name}}</div>
+            <div class="paddedleft">{{balance | currency:'EUR':true:'1.2-2'}}</div>
+        </div>
+
+        <div id="buttons" class="flexbetween">
+            <div><button class="btn btn-outline-primary" style="height: 100%"
+                    (click)="toggleHistory()">{{isHistory?'Store':'History'}}</button></div>
+            <div style="padding-left: 10px;"><button class="btn btn-danger" style="height: 100%;"
+                    (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

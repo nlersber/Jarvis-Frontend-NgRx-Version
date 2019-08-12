@@ -11,10 +11,18 @@ import { FiltersComponent } from './components/filters/filters/filters.component
 import { ItemThumbnailComponent } from './components/item-thumbnail/item-thumbnail.component';
 import { ShopContainerComponent } from './components/shop-container/shop-container.component';
 import { ShowcaseComponent } from './components/showcase/showcase.component';
+import { HistoryComponent } from './components/history/history.component';
+import { MaincontainerComponent } from './components/maincontainer/maincontainer.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'shop', pathMatch: 'full' },
-  { path: 'shop', canActivate: [AuthGuard], component: ShopContainerComponent },
+  {
+    path: 'shop', component: MaincontainerComponent, children: [
+      { path: '', redirectTo: 'store', pathMatch: 'full' },
+      { path: 'store', canActivate: [AuthGuard], component: ShopContainerComponent },
+      { path: 'history', canActivate: [AuthGuard], component: HistoryComponent }
+    ]
+  },
+
 ]
 
 
@@ -28,6 +36,8 @@ const routes: Routes = [
     ItemThumbnailComponent,
     FilterContainerComponent,
     ShopContainerComponent,
+    HistoryComponent,
+    MaincontainerComponent,
   ],
   imports: [
     ReactiveFormsModule,

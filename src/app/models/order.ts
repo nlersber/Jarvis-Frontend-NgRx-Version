@@ -1,8 +1,9 @@
-import { OrderItem } from './orderItem';
+import { OrderItem, HistoryOrderItem } from './orderItem';
 import { Item } from './item';
 
 export class Order {
-    private items = new Array<OrderItem>()
+    items = new Array<OrderItem>()
+    date: string
 
     constructor(map: Map<Item, number>) {
         const temp = Array.from(map.entries())
@@ -16,4 +17,8 @@ export class Order {
             items: this.items.map(s => s.toJSON())
         }
     }
+}
+
+export class HistoryOrder {
+    constructor(public items: HistoryOrderItem[], public date: string) { }
 }
