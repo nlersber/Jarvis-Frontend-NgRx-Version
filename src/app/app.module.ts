@@ -10,6 +10,7 @@ import { filterReducer } from "./reducers/filterReducer";
 import { CartService } from './services/cart/cart.service';
 import { DataService } from './services/data/data.service';
 import { ShopModule } from './shop/shop.module';
+import { DatePipe } from '@angular/common';
 
 const routes: Routes = [
   { path: '', redirectTo: 'shop', pathMatch: 'full' },
@@ -36,7 +37,8 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [
     DataService,
-    CartService
+    CartService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

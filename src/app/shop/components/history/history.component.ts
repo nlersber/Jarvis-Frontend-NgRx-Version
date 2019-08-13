@@ -13,14 +13,18 @@ export class HistoryComponent implements OnInit {
 
 
   constructor(private userService: UserService) {
-    this.userService.orders.subscribe(s => this.orders = s)
+    this.userService.orders.subscribe(s => {
+      this.orders = s
+      console.log(this.orders)
+    })
   }
 
   ngOnInit() {
 
   }
 
-  reload(){
+  reload() {
+    const temp=this.orders
     this.userService.reload()
   }
 

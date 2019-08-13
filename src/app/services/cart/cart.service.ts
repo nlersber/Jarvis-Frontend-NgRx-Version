@@ -3,6 +3,9 @@ import { Item } from '../../models/item';
 import { Subject } from 'rxjs';
 import { DataService } from '../data/data.service';
 import { Order } from '../../models/order';
+import { AuthenticationService } from 'src/app/login/services/authentication.service';
+import { DatePipe } from '@angular/common';
+import { UserService } from 'src/app/shop/services/user.service';
 
 
 @Injectable()
@@ -16,7 +19,7 @@ export class CartService {
 
   itemAdded$ = this.itemAddedSource.asObservable()
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private auth: AuthenticationService, private datePipe: DatePipe, private userService: UserService) { }
 
   containsItem(item: Item): boolean {
     let arr = new Array<number>()
@@ -28,7 +31,7 @@ export class CartService {
 
 
   addItemToCart(item: Item, amount: number) {
-    this.cartTotal += item.price*amount;
+    this.cartTotal += item.price * amount;
     //Search this product on the cart and increment the quantity
 
     if (this.containsItem(item)) {
@@ -44,10 +47,9 @@ export class CartService {
   }
 
   deleteItemFromCart(item) {
-    console.log(item)
     if (this.containsItem(item)) {
       let amount: number = this.items.get(item)
-      if (amount === 1)
+      if (amount <= 1)
         this.items.delete(item)
       else
         this.items.set(item, amount - 1)
@@ -63,10 +65,14 @@ export class CartService {
     this.itemAddedSource.next({ items: this.items, cartTotal: this.cartTotal })
   }
 
-  placeOrder() {
-    this.dataService.placeOrder(new Order(this.items).toJSON()).subscribe();
+  placeOrder(): boolean {
+    if (!this.userService.checkCredit(this.cartTotal))
+      return false;
+    this.dataService.placeOrder(new Order(this.items, this.auth.user.getValue(), this.datePipe.transform(new Date(), 'medium'))).subscribe();
     this.dataService.triggerReloadItems()
+    this.userService.reload()
     this.flushCart();
+    return true;
   }
 
 }

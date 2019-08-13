@@ -16,12 +16,18 @@ export class UserService {
     this.auth.getUser().subscribe(s => {
       this.user.next(s)
       if (this.user.getValue().name !== '')
-        this.auth.getOrders().subscribe(s => this.orders.next(s))//Only when a user can be found
+        this.auth.getOrders().subscribe(t => this.orders.next(t))//Only when a user can be found
     })
   }
 
-  reload(){
-    this.auth.getOrders().subscribe(s=> this.orders.next(s))
+  reload() {
+    this.auth.getOrders().subscribe(s => this.orders.next(s))
+    this.auth.getUser().subscribe(s => this.user.next(s))
+  }
+
+  checkCredit(total: number): boolean {
+    const value = this.user.getValue()
+    return (!!value && this.user.getValue().balance >= total)
   }
 
 

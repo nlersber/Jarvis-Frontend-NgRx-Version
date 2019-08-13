@@ -16,7 +16,7 @@ export class CartComponent implements OnInit {
   arrItems: any[]
   numItems: number = 0
   cartTotal: number = 0
-
+  hasError: boolean = false
 
 
 
@@ -26,7 +26,7 @@ export class CartComponent implements OnInit {
     this.cartService.itemAdded$.subscribe(data => {
       this.items = data.items
       this.isEmpty = this.items.size == 0
-      this.arrItems = this.isEmpty ? [] : Array.from(data.items.entries());
+      this.arrItems = this.isEmpty ? [] : Array.from(data.items.entries())
 
       this.cartTotal = data.cartTotal
       this.numItems = this.items.size
@@ -40,11 +40,16 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder() {
-    this.cartService.placeOrder();
-    this.RefreshEvent.emit("");
+    if (this.cartService.placeOrder()) {
+      this.RefreshEvent.emit("")
+      this.hasError = false
+    }
+    else
+      this.hasError = true
+
   }
 
-  clearCart(){
+  clearCart() {
     this.cartService.flushCart()
   }
 }

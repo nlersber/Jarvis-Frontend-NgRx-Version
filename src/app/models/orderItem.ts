@@ -11,5 +11,5 @@ export class OrderItem {
 }
 
 export class HistoryOrderItem {
-    constructor(public name: string, public count: number) { }
+    constructor(public name: string, public amount: number) { }
 }

@@ -90,7 +90,7 @@ export class AuthenticationService {
   }
 
   getOrders(): Observable<HistoryOrder[]> {
-    return this.http.get<HistoryOrder[]>(`${environment.apiUrl}/order`, { params: { name: this.user$.getValue() } })
+    return this.http.get<HistoryOrder[]>(`${environment.apiUrl}/order`, { params: { name: this.user$.getValue() } } )
   }
 
 }

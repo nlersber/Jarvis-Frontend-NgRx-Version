@@ -7,6 +7,7 @@ import { PriceFilter } from 'src/app/models/priceFilter';
 import { environment } from '../../../environments/environment';
 import * as FilterActions from "../../actions/filter.action";
 import { Item } from '../../models/item';
+import { Order } from 'src/app/models/order';
 
 export interface AppState {
   filter: PriceFilter
@@ -18,7 +19,7 @@ export class DataService {
 
   filter: Observable<PriceFilter>
   refresh: Subject<any>
-   = new Subject()
+    = new Subject()
 
   constructor(private store: Store<AppState>, private http: HttpClient) {
     this.filter = this.store.select('filter')
@@ -50,9 +51,9 @@ export class DataService {
     //return observableThrowError(errMsg);
   }
 
-  placeOrder(items: any) {
+  placeOrder(items: Order) {
     const headers = new HttpHeaders().set('content-type', 'application/json')
-    return this.http.post(`${environment.apiUrl}/Order/`, items, { headers })
+    return this.http.post(`${environment.apiUrl}/order/`, items, { headers })
   }
 
   triggerReloadItems() {

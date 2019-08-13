@@ -1,22 +1,26 @@
-<div class="historywrapper">
-    <button (click)="reload()">Reload</button>
-    <div *ngFor="let order of orders">
-        <table class="orderwrapper">
-            <tr>
-                <td>
-                    <table>
-                        <tr><small>{{order.date}}</small></tr>
-                        <tr>
+<div class="container wrapper">
+    <div class="row">
+        <div class="offset-sm-4 col-xs-12 col-sm-4 historywrapper">
+
+            <div *ngFor="let order of orders" class="row">
+                <table class="orderwrapper table offset-sm-2 col-xs-12 col-sm-8">
+                    <tr>
+                        <td >
                             <table>
-                                <tr class="orderdetails" *ngFor="let item of order.items">
-                                    <td>{{item.name}}</td>
-                                    <td>{{item.count}}</td>
+                                <tr><small>{{order.date}}</small></tr>
+                                <tr>
+                                    <table>
+                                        <tr class="orderdetails" *ngFor="let item of order.items">
+                                            <td>{{item.name}}</td>
+                                            <td>{{item.amount}}</td>
+                                        </tr>
+                                    </table>
                                 </tr>
                             </table>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
