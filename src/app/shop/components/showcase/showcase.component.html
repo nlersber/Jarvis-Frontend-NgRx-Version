@@ -2,7 +2,7 @@
   <div class="offset-sm-2 offset-md-8 col-sm-8 col-md-3" style="padding-bottom: 10px;">
     <form [formGroup]="form">
       <div class="searchWrapper">
-        <input type="text" (keyup)="searchName()" formControlName="search" name="search" id="search"
+        <input type="text" data-cy="searchbar" (keyup)="searchName()" formControlName="search" name="search" id="search"
           placeholder="Search...">
       </div>
     </form>

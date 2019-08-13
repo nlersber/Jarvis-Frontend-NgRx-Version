@@ -1,0 +1,65 @@
+[
+    {
+        "id": 7,
+        "name": "Water",
+        "price": 1,
+        "category": 1,
+        "count": 48
+    },
+    {
+        "id": 1,
+        "name": "Cola",
+        "price": 1.5,
+        "category": 1,
+        "count": 47
+    },
+    {
+        "id": 2,
+        "name": "Cola Zero",
+        "price": 1.5,
+        "category": 1,
+        "count": 48
+    },
+    {
+        "id": 3,
+        "name": "Fanta",
+        "price": 1.5,
+        "category": 1,
+        "count": 49
+    },
+    {
+        "id": 4,
+        "name": "Sprite",
+        "price": 1.5,
+        "category": 1,
+        "count": 49
+    },
+    {
+        "id": 5,
+        "name": "Red Bull",
+        "price": 2,
+        "category": 1,
+        "count": 50
+    },
+    {
+        "id": 6,
+        "name": "Red Bull Zero",
+        "price": 2,
+        "category": 1,
+        "count": 50
+    },
+    {
+        "id": 9,
+        "name": "Hot Dog",
+        "price": 1.5,
+        "category": 2,
+        "count": 50
+    },
+    {
+        "id": 8,
+        "name": "Pizza",
+        "price": 2.5,
+        "category": 2,
+        "count": 50
+    }
+]

@@ -9,7 +9,7 @@
     <div>
         <form [formGroup]='form' id="pFilters">
             <div *ngFor="let item of priceFilters">
-                <input class="filterCheckbox" type="radio" [checked]='item.checked'
+                <input class="filterCheckbox" data-cy="filter" type="radio" [checked]='item.checked'
                     (click)='changeFilter(item.id)'>{{item.name}}<br>
             </div>
         </form>
